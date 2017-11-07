@@ -1,5 +1,6 @@
 import numpy as np
 import csv
+import pandas as pd
 
 #constants
 BSIZE = 6
@@ -14,6 +15,9 @@ winningy = int((BSIZE - 1) / 2)
 winningx = BSIZE - 1
 
 board = np.zeros((BSIZE,BSIZE))
+
+spel = pd.read_csv("games/game1.csv", delimiter = "\t", index_col = "car_id")
+print(spel)
 
 
 # make function to place cars on the board
