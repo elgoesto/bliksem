@@ -18,9 +18,7 @@ board = np.zeros((BSIZE,BSIZE))
 
 spel = pd.read_csv('games/game1.csv', delimiter = '\t', index_col = 'car_id')
 print(spel)
-# spel = csv.reader(open('games/game1.csv'), delimiter=',')
-# for row in spel:
-#     print(row)
+
 # make function to place cars on the board
 # set coordinate and orintation
 # orientation 1 = vertical, 2 = horizontal
@@ -85,12 +83,7 @@ car1 = Car(1, 2, 3, 1, 2)
 car2 = Car(2, 0, 3, 2, 3)
 
 
-# print(board,"\n")
-car1.move(UP)
-# print(board)
-print()
-car2.move(LEFT)
-# print(board)
+
 
 
 
