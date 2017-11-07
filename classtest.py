@@ -16,8 +16,9 @@ winningx = BSIZE - 1
 
 board = np.zeros((BSIZE,BSIZE))
 
-spel = pd.read_csv("games/game1.csv", delimiter = "\t", index_col = "car_id")
-print(spel)
+spel = pd.read_csv("games/game1.csv", delimiter = "\t")
+print(type(spel.iloc[2]['orient']))
+print(len(spel.index))
 
 
 # make function to place cars on the board
@@ -39,11 +40,11 @@ class Car():
             self.last = x + size
 
         # Place car vertical
-        if orient == VERTICAL:
+        if orient == 1:
             board[y:size+y,x] = car_id
 
         # Place car horizontal
-        elif orient == HORIZONTAL:
+        elif orient == 2:
             board[y,x:size+x] = car_id
 
         else:
@@ -89,14 +90,17 @@ class Car():
 
 # examples how to place cars
 
-car1 = Car(1, 2, 3, 2, 2)
-car2 = Car(2, 0, 3, 2, 3)
+for auto in range(len(spel.index)):
+
+    Car(spel.iloc[auto]['car_id'],spel.iloc[auto]['y'], spel.iloc[auto]['x'],
+                        spel.iloc[auto]['orient'],spel.iloc[auto]['size'])
 
 print(board)
 print("******************************")
-car1.move(RIGHT)
 
-# car1.move(UP)
+
+
+
 # print(board)
 # print()
 # car2.move(LEFT)
