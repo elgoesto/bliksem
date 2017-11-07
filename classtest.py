@@ -45,7 +45,11 @@ class Car():
         else:
             print("error")
 
-
+    def check(self):
+        print(board)
+        print("******************************")
+        if board[winningy][winningx] == 1:
+            print("you won!")
 
 
     def move(self, direction):
@@ -56,37 +60,44 @@ class Car():
                     if self.orient == VERTICAL:
                         if direction == 1 and board[i + self.size][j] == 0:
                             board[i][j] = 0
-                            return Car(self.car_id, i + direction, j, self.orient, self.size)
+                            Car(self.car_id, i + direction, j, self.orient, self.size)
+                            return self.check()
                         elif direction == -1 and board[i + direction][j] == 0:
                              board[i+self.size-1][j] = 0
-                             return Car(self.car_id, i + direction, j, self.orient, self.size)
+                             Car(self.car_id, i + direction, j, self.orient, self.size)
+                             return self.check()
                         else:
                             print("invalid move")
                             break
                     elif self.orient == HORIZONTAL:
                         if direction == 1 and board[i][j + self.size] == 0:
                             board[i][j] = 0
-                            return Car(self.car_id, i, j + direction, self.orient, self.size)
+                            Car(self.car_id, i, j + direction, self.orient, self.size)
+                            return self.check()
                         elif direction == -1 and board[i][j + direction] == 0:
                              board[i][j + self.size-1] = 0
-                             return Car(self.car_id, i, j + direction, self.orient, self.size)
+                             Car(self.car_id, i, j + direction, self.orient, self.size)
+                             return self.check()
                         else:
                             print("invalid move")
                             break
 
 
 # examples how to place cars
-car1 = Car(1, 2, 3, 1, 2)
+
+car1 = Car(1, 2, 3, 2, 2)
 car2 = Car(2, 0, 3, 2, 3)
 
-
-print(board,"\n")
-car1.move(UP)
 print(board)
-print()
-car2.move(LEFT)
-print(board)
+print("******************************")
+car1.move(RIGHT)
 
+# car1.move(UP)
+# print(board)
+# print()
+# car2.move(LEFT)
+# print(board)
+#
 
 
 
