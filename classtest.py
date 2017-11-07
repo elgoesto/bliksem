@@ -1,16 +1,17 @@
 import numpy as np
-import cs50
 
 
 #constants
 BSIZE = 6
+VERTICAL = 1
+HORIZONTAL = 2
+DOWN = 1
+RIGHT = 1
+UP = -1
+LEFT = -1
+
 
 board = np.zeros((BSIZE,BSIZE))
-
-
-# make cars, horizontal and verical, niet meer nodig
-# car2h = np.array([1,1])
-# car2v = np.array([[1],[1]])
 
 
 # make function to place cars on the board
@@ -19,31 +20,72 @@ board = np.zeros((BSIZE,BSIZE))
 class Car():
     "class to make cars"
 
-    def __init__(self, y, x, orient, size, car_id):
+    def __init__(self, car_id, y, x, orient, size):
+
+        self.y = y
+        self.x = x
+        self.car_id = car_id
+        self.orient = orient
+        self.size = size
+        if orient == VERTICAL:
+            self.last = y + size
+        elif orient == HORIZONTAL:
+            self.last = x + size
 
         # Place car vertical
-        if orient == 1:
+        if orient == VERTICAL:
             board[y:size+y,x] = car_id
 
         # Place car horizontal
-        elif orient == 2:
+        elif orient == HORIZONTAL:
             board[y,x:size+x] = car_id
 
         else:
-            print(error)
+            print("error")
 
 
 
 
+    def move(self, direction):
 
-
+        for i in range(BSIZE):
+            for j in range(BSIZE):
+                if board[i][j] == self.car_id:
+                    if self.orient == VERTICAL:
+                        if direction == 1 and board[i + self.size][j] == 0:
+                            board[i][j] = 0
+                            return Car(self.car_id, i + direction, j, self.orient, self.size)
+                        elif direction == -1 and board[i + direction][j] == 0:
+                             board[i+self.size-1][j] = 0
+                             return Car(self.car_id, i + direction, j, self.orient, self.size)
+                        else:
+                            print("invalid move")
+                            break
+                    elif self.orient == HORIZONTAL:
+                        if direction == 1 and board[i][j + self.size] == 0:
+                            board[i][j] = 0
+                            return Car(self.car_id, i, j + direction, self.orient, self.size)
+                        elif direction == -1 and board[i][j + direction] == 0:
+                             board[i][j + self.size-1] = 0
+                             return Car(self.car_id, i, j + direction, self.orient, self.size)
+                        else:
+                            print("invalid move")
+                            break
 
 # examples how to place cars
-car1 = Car(2, 3, 1, 2, 1)
-car2 = Car(0, 3, 2, 3, 2)
+car1 = Car(1, 2, 3, 1, 2)
+car2 = Car(2, 0, 3, 2, 3)
 
 
+print(board,"\n")
+car1.move(UP)
 print(board)
+print()
+car2.move(LEFT)
+print(board)
+
+
+
 
 
 # Make function to move, where direction 1 = left/up and 2 = right/down
