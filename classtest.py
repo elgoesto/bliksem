@@ -1,5 +1,5 @@
 import numpy as np
-
+import csv
 
 #constants
 BSIZE = 6
@@ -10,6 +10,8 @@ RIGHT = 1
 UP = -1
 LEFT = -1
 
+winningy = int((BSIZE - 1) / 2)
+winningx = BSIZE - 1
 
 board = np.zeros((BSIZE,BSIZE))
 
@@ -71,6 +73,7 @@ class Car():
                         else:
                             print("invalid move")
                             break
+
 
 # examples how to place cars
 car1 = Car(1, 2, 3, 1, 2)
