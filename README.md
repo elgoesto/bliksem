@@ -3,7 +3,8 @@
 
 ## The game
 In Rush Hour, a sliding block logic game, you have to battle the gridlock as you slide the blocking vehicles out of the way for the red car to exit. 
-<img src>
+
+<img src=https://github.com/elgoesto/bliksem/blob/master/speelbord.gif width="255">
 
 ## Installing
 To run this program you will need to install the following software:
