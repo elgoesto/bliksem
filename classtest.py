@@ -68,24 +68,24 @@ class Car():
                             Car(self.car_id, i + direction, j, self.orient, self.size)
                             return self.check()
                         elif direction == -1 and board[i + direction][j] == 0:
-                             board[i+self.size-1][j] = 0
-                             Car(self.car_id, i + direction, j, self.orient, self.size)
-                             return self.check()
+                            board[i+self.size-1][j] = 0
+                            Car(self.car_id, i + direction, j, self.orient, self.size)
+                            return self.check()
                         else:
                             print("invalid move")
-                            break
+                            return None
                     elif self.orient == HORIZONTAL:
                         if direction == 1 and board[i][j + self.size] == 0:
                             board[i][j] = 0
                             Car(self.car_id, i, j + direction, self.orient, self.size)
                             return self.check()
                         elif direction == -1 and board[i][j + direction] == 0:
-                             board[i][j + self.size-1] = 0
-                             Car(self.car_id, i, j + direction, self.orient, self.size)
-                             return self.check()
+                            board[i][j + self.size-1] = 0
+                            Car(self.car_id, i, j + direction, self.orient, self.size)
+                            return self.check()
                         else:
                             print("invalid move")
-                            break
+                            return None
 
 
 # examples how to place cars
@@ -100,8 +100,8 @@ print(board)
 print("******************************")
 print(cars)
 cars[1].move(DOWN)
-
-
+cars[1].move(DOWN)
+cars[1].move(UP)
 
 # print(board)
 # print()
