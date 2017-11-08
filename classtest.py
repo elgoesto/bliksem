@@ -89,15 +89,17 @@ class Car():
 
 
 # examples how to place cars
+cars = []
 
 for auto in range(len(spel.index)):
 
-    Car(spel.iloc[auto]['car_id'],spel.iloc[auto]['y'], spel.iloc[auto]['x'],
-                        spel.iloc[auto]['orient'],spel.iloc[auto]['size'])
+    cars.append(Car(int(spel.iloc[auto]['car_id']),int(spel.iloc[auto]['y']), int(spel.iloc[auto]['x']),
+                        int(spel.iloc[auto]['orient']),int(spel.iloc[auto]['size'])))
 
 print(board)
 print("******************************")
-
+print(cars)
+cars[1].move(DOWN)
 
 
 
