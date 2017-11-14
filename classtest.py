@@ -1,6 +1,7 @@
 import numpy as np
 import csv
 import pandas as pd
+import random
 
 #constants
 BSIZE = 6
@@ -61,8 +62,8 @@ class Car():
 
         for i in range(BSIZE):
             for j in range(BSIZE):
-                if board[i][j] == self.car_id:
-                    if self.orient == VERTICAL:
+                if board[i][j] == self.car_id :
+                    if self.orient == 1:
                         if direction == 1 and board[i + self.size][j] == 0:
                             board[i][j] = 0
                             Car(self.car_id, i + direction, j, self.orient, self.size)
@@ -74,7 +75,7 @@ class Car():
                         else:
                             print("invalid move")
                             return None
-                    elif self.orient == HORIZONTAL:
+                    elif self.orient == 2:
                         if direction == 1 and board[i][j + self.size] == 0:
                             board[i][j] = 0
                             Car(self.car_id, i, j + direction, self.orient, self.size)
@@ -96,12 +97,26 @@ for auto in range(len(spel.index)):
     cars.append(Car(int(spel.iloc[auto]['car_id']),int(spel.iloc[auto]['y']), int(spel.iloc[auto]['x']),
                         int(spel.iloc[auto]['orient']),int(spel.iloc[auto]['size'])))
 
-print(board)
-print("******************************")
-print(cars)
+
+
 cars[1].move(DOWN)
-cars[1].move(DOWN)
-cars[1].move(UP)
+cars[6].move(UP)
+cars[2].move(LEFT)
+# cars[8].move(RIGHT)
+# cars[6].move(DOWN)
+
+
+def dirry():
+    d = random.randint(1,2)
+    if d == 2:
+        d = -1
+    return d
+
+for i in range(2000):
+    r = random.randint(0,8)
+    d = dirry()
+    print (r,d)
+    # cars[r].move(d)
 
 # print(board)
 # print()
