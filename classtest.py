@@ -50,7 +50,9 @@ class Car():
     # Function to check if car number 1 is on the winning coordinates.
     def check(self):
         if board[winningy][winningx] == 1:
+            print(board)
             print("you won!")
+            print(score)
             sys.exit("WON")
         return print(board, "\n")
 
@@ -118,11 +120,13 @@ def dirry():
         d = -1
     return d
 
-for i in range(1000):
-    r = random.randint(0,8)
+score = 0
+for i in range(100000):
+    r = random.randint(0,12)
     d = dirry()
     while(cars[r].move(d) == True):
         cars[r].move(d)
+    score += 1
 
 
 
