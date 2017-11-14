@@ -5,7 +5,7 @@ import random
 import sys
 
 # Import the csv file of the game you want to play.
-spel = pd.read_csv("games/game2.csv", delimiter = "\t")
+spel = pd.read_csv("games/game7.csv", delimiter = "\t")
 
 # Define constants.
 VERTICAL = 1
@@ -53,7 +53,6 @@ class Car():
             print(board)
             print(score)
             sys.exit("YOU WON!")
-        return print(board, "\n")
 
     # Function to move the cars by changing the values on the board.
     def move(self, direction):
@@ -80,7 +79,6 @@ class Car():
                             self.check()
 
                         else:
-                            print("invalid move", "\n")
                             return False
                     else:
                         if direction == RIGHT and (j + self.size) < BSIZE and \
@@ -97,7 +95,6 @@ class Car():
                             self.orient, self.size)
                             self.check()
                         else:
-                            print("invalid move", "\n")
                             return False
 
 
@@ -114,7 +111,7 @@ def dirry():
     return d
 
 score = 0
-for i in range(100000):
+for i in range(1000000):
     r = random.randint(0, RANDOM_CARS)
     d = dirry()
     while(cars[r].move(d) == True):
