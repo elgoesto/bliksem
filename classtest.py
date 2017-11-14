@@ -23,7 +23,7 @@ board = np.zeros((BSIZE,BSIZE))
 
 # Import the csv file of the game you want to play.
 spel = pd.read_csv("games/game2.csv", delimiter = "\t")
-
+totalcars = len(spel.index) - 1
 # Initialize the board.
 class Car():
     "class to make cars"
@@ -122,7 +122,7 @@ def dirry():
 
 score = 0
 for i in range(100000):
-    r = random.randint(0,12)
+    r = random.randint(0, totalcars)
     d = dirry()
     while(cars[r].move(d) == True):
         cars[r].move(d)
