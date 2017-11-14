@@ -41,49 +41,46 @@ class Car():
         if orient == VERTICAL:
             board[y:size+y,x] = car_id
         elif orient == HORIZONTAL:
-                board[y,x:size+x] = car_id
+            board[y,x:size+x] = car_id
         else:
             print("error")
 
     # Function to check if car number 1 is on the winning coordinates.
     def check(self):
-        print(board, "\n")
         if board[winningy][winningx] == 1:
             print("you won!")
+        return print(board, "\n")
 
     # Function to move the cars by chaning the values on the board.
     def move(self, direction):
         for i in range(BSIZE):
             for j in range(BSIZE):
                 if board[i][j] == self.car_id:
-
                     # Change values on board based on the orient and direction.
                     if self.orient == VERTICAL:
-                        if direction == DOWN and board[i + self.size][j] == EMPTY_SPACE:
+                        if direction == 1 and (i + self.size) < BSIZE and board[i + self.size][j] == 0:
                             # Change x coordinate of the car with the direction.
-                            board[i][j] = EMPTY_SPACE
+                            board[i][j] = 0
                             Car(self.car_id, i + direction, j, self.orient, self.size)
-                            return self.check()
-                        elif direction == UP and board[i + direction][j] == EMPTY_SPACE:
-                            board[i+self.size-1][j] = EMPTY_SPACE
+                            self.check()
+                        elif direction == -1 and (i + direction) >= 0 and board[i + direction][j] == 0:
+                            board[i+self.size-1][j] = 0
                             Car(self.car_id, i + direction, j, self.orient, self.size)
-                            return self.check()
+                            self.check()
                         else:
-                            print("invalid move", "\n")
-                            return self.check()
+                            return print("invalid move", "\n")
+                    else:
+                        if direction == 1 and (j + self.size) < BSIZE and board[i][j + self.size] == 0:
+                            board[i][j] = 0
+                            Car(self.car_id, i, j + direction, self.orient, self.size)
+                            self.check()
+                        elif direction == -1 and (j + direction) >= 0 and board[i][j + direction] == 0:
+                            board[i][j + self.size-1] = 0
+                            Car(self.car_id, i, j + direction, self.orient, self.size)
+                            self.check()
+                        else:
+                            return print("invalid move", "\n")
 
-                    elif self.orient == HORIZONTAL:
-                        if direction == RIGHT and board[i][j + self.size] == EMPTY_SPACE:
-                            board[i][j] = EMPTY_SPACE
-                            Car(self.car_id, i, j + direction, self.orient, self.size)
-                            return self.check()
-                        elif direction == LEFT and board[i][j + direction] == EMPTY_SPACE:
-                            board[i][j + self.size-1] = EMPTY_SPACE
-                            Car(self.car_id, i, j + direction, self.orient, self.size)
-                            return self.check()
-                        else:
-                            print("invalid move", "\n")
-                            return self.check()
 
 
 # examples how to place cars
@@ -91,17 +88,19 @@ cars = []
 
 for auto in range(len(spel.index)):
 
-    cars.append(Car(int(spel.iloc[auto]['car_id']),int(spel.iloc[auto]['y']), int(spel.iloc[auto]['x']),
+    cars.append(Car(int(spel.iloc[auto]['car_id']-1),int(spel.iloc[auto]['y']), int(spel.iloc[auto]['x']),
                         int(spel.iloc[auto]['orient']),int(spel.iloc[auto]['size'])))
 
 print(board)
-print("******************************")
-print(cars)
-cars[1].move(DOWN)
-cars[7].move(UP)
-cars[2].move(DOWN)
-cars[6].move(LEFT)
-
+cars[4].move(UP)
+cars[1].move(LEFT)
+cars[8].move(RIGHT)
+cars[6].move(UP)
+cars[6].move(UP)
+cars[6].move(UP)
+cars[6].move(UP)
+cars[6].move(UP)
+cars[8].move(RIGHT)
 # print(board)
 # print()
 # car2.move(LEFT)
