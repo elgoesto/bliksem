@@ -14,6 +14,7 @@ To run this program you will need to install the following software:
 
 ## Instructions
 * First you will need to choose with which set-up of the board you would like to play.
+  * You can do this in the variable 'spel', choose the csv file of the game you would like to play.
 * Then a representation of the game is shown to the user.
   * Every 0 represents an empty space, at which the cars are able to drive to.
   * The 1 represents Lightning McQueen, the car to unpark.
@@ -24,6 +25,8 @@ To run this program you will need to install the following software:
   * A car cannot move outside of the board. 
 * To win the game you will need to move the red car, the car with number 1, completely to the right side of the board. 
 
+## Run File
+If you want to run the game run classtest.py.
 
 ## Authors
 Lotte Nelson,
