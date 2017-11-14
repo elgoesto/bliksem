@@ -26,6 +26,6 @@ To run this program you will need to install the following software:
 
 
 ## Authors
-Lotte Nelson
-David van der Velden
+Lotte Nelson,
+David van der Velden en 
 Justo van der Werf
