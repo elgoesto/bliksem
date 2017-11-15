@@ -5,7 +5,7 @@ import random
 import sys
 
 # Import the csv file of the game you want to play.
-spel = pd.read_csv("games/game7.csv", delimiter = "\t")
+spel = pd.read_csv("games/game2.csv", delimiter = "\t")
 
 # Define constants.
 VERTICAL = 1
@@ -16,7 +16,8 @@ RIGHT = 1
 LEFT = -1
 EMPTY = 0
 BSIZE = int(spel.iloc[0]["BSIZE"])
-RANDOM_CARS = len(spel.index) - 1
+TOTAL_CARS = len(spel.index)
+RANDOM_CARS = TOTAL_CARS - 1
 WIN_X = BSIZE - 1
 WIN_Y = int((WIN_X) / 2)
 
@@ -53,6 +54,7 @@ class Car():
             print(board)
             print(score)
             sys.exit("YOU WON!")
+        print(board, "\n")
 
     # Function to move the cars by changing the values on the board.
     def move(self, direction):
@@ -99,7 +101,7 @@ class Car():
 
 
 # Add every car in the game to the list cars.
-for car in range(len(spel.index)):
+for car in range(TOTAL_CARS):
     cars.append(Car(int(spel.iloc[car]['car_id']), int(spel.iloc[car]['y']),
                     int(spel.iloc[car]['x']), int(spel.iloc[car]['orient']),
                     int(spel.iloc[car]['size'])))
