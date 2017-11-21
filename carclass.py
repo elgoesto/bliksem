@@ -59,33 +59,39 @@ class Car():
 
                     # Check if the given move is valid, if so, move the car on the board.
                     if self.orient == VERTICAL:
-                        if direction == DOWN and (i + self.size) < BSIZE and \
-                        board[i + self.size][j] == EMPTY:
-                            board[i][j] = EMPTY
-                            Car(self.car_id, i + direction, j,
-                            self.orient, self.size)
-                            check()
 
-                        elif direction == UP and (i + direction) >= EMPTY and \
-                        board[i + direction][j] == EMPTY:
-                            board[i+self.size-1][j] = EMPTY
+                        if (direction == DOWN and (i + self.size) < BSIZE and \
+                            board[i + self.size][j] == EMPTY) \
+                            or \
+                            (direction == UP and (i + direction) >= EMPTY and \
+                            board[i + direction][j] == EMPTY):
+
+                            if direction == DOWN:
+                                i_coordinate = i
+                            else:
+                                i_coordinate = i + self.size - 1
+
+                            board[i_coordinate][j] = EMPTY
                             Car(self.car_id, i + direction, j,
                             self.orient, self.size)
                             check()
 
                         else:
                             return False
-                    else:
-                        if direction == RIGHT and (j + self.size) < BSIZE and \
-                        board[i][j + self.size] == EMPTY:
-                            board[i][j] = EMPTY
-                            Car(self.car_id, i, j + direction,
-                            self.orient, self.size)
-                            check()
 
-                        elif direction == LEFT and (j + direction) >= EMPTY and \
-                        board[i][j + direction] == EMPTY:
-                            board[i][j + self.size-1] = EMPTY
+                    else:
+                        if (direction == RIGHT and (j + self.size) < BSIZE and \
+                            board[i][j + self.size] == EMPTY) \
+                            or \
+                            (direction == LEFT and (j + direction) >= EMPTY and \
+                            board[i][j + direction] == EMPTY):
+
+                            if direction == RIGHT:
+                                j_coordinate = j
+                            else:
+                                j_coordinate = j + self.size - 1
+
+                            board[i][j_coordinate] = EMPTY
                             Car(self.car_id, i, j + direction,
                             self.orient, self.size)
                             check()
