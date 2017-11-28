@@ -19,14 +19,10 @@ To run this program you will need to install the following software:
   * Every 0 represents an empty space, at which the cars are able to drive to.
   * The 1 represents Lightning McQueen, the car to unpark.
   * Every other number represents all of the other cars parked on the board.
-* (NOT YET) The user will be prompted which car needs to be moved and in which direction. Limitations: 
-  * A car can only move in the direction at which it is pointing, horizontal or vertical. 
-  * A car can only move on empty spaces, so it is not possible to park a car where another car is already parked. 
-  * A car cannot move outside of the board. 
 * To win the game you will need to move the red car, the car with number 1, completely to the right side of the board. 
 
 ## Run File
-If you want to run the game run classtest.py.
+If you want to run the game run main.py. When you are running the game the random algortim will start to solve the game.
 
 ## Authors
 Lotte Nelson,
