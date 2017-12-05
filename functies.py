@@ -1,16 +1,5 @@
-import carclass as cc
+import test_carclass as cc
 import random
-
-
-def makecars(Car, TOTAL_CARS, spel):
-    cars = []
-
-    # Add every car in the game to the list cars.
-    for car in range(TOTAL_CARS):
-        cars.append(Car(int(spel.iloc[car]['car_id']), int(spel.iloc[car]['y']),
-                        int(spel.iloc[car]['x']), int(spel.iloc[car]['orient']),
-                        int(spel.iloc[car]['size'])))
-    return cars
 
 
 
@@ -31,7 +20,7 @@ def randomize(cars, RANDOM_CARS):
         while(cars[r].move(d) == True):
             cars[r].move(d)
         score += 1
-    print(cc.board)
+    print(cc.Board.board)
     print("You Won")
     print ("with " , score , " moves.")
     return score

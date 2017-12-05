@@ -24,7 +24,7 @@ RANDOM_CARS = TOTAL_CARS - 1
 WIN_X = BSIZE - 1
 WIN_Y = int((WIN_X) / 2)
 
-board = np.zeros((BSIZE, BSIZE))
+# board = np.zeros((BSIZE, BSIZE))
 
 
 class Car():
@@ -43,9 +43,9 @@ class Car():
 
         # Place every car on the board, based on its' orient.
         if orient == VERTICAL:
-            board[y:size+y,x] = car_id
+            Board.board[y:size+y,x] = car_id
         elif orient == HORIZONTAL:
-            board[y,x:size+x] = car_id
+            Board.board[y,x:size+x] = car_id
 
 
 
@@ -55,16 +55,16 @@ class Car():
             for j in range(BSIZE):
 
                 # If you find the location of the car, proceed.
-                if board[i][j] == self.car_id:
+                if Board.board[i][j] == self.car_id:
 
                     # Check if the given move is valid, if so, move the car on the board.
                     if self.orient == VERTICAL:
 
                         if (direction == DOWN and (i + self.size) < BSIZE and \
-                            board[i + self.size][j] == EMPTY) \
+                            Board.board[i + self.size][j] == EMPTY) \
                             or \
                             (direction == UP and (i + direction) >= EMPTY and \
-                            board[i + direction][j] == EMPTY):
+                            Board.board[i + direction][j] == EMPTY):
 
                             if direction == DOWN:
                                 i_coordinate = i
@@ -79,10 +79,10 @@ class Car():
 
                     else:
                         if (direction == RIGHT and (j + self.size) < BSIZE and \
-                            board[i][j + self.size] == EMPTY) \
+                            Board.board[i][j + self.size] == EMPTY) \
                             or \
                             (direction == LEFT and (j + direction) >= EMPTY and \
-                            board[i][j + direction] == EMPTY):
+                            Board.board[i][j + direction] == EMPTY):
 
                             if direction == RIGHT:
                                 j_coordinate = j
@@ -95,13 +95,27 @@ class Car():
                         else:
                             return False
 
-                    board[i_coordinate][j_coordinate] = EMPTY
+                    Board.board[i_coordinate][j_coordinate] = EMPTY
                     Car(self.car_id, base_i, base_j, self.orient, self.size)
                     check()
 
+class Board():
+    "Class to keep track of the board"
+    board = np.zeros((BSIZE, BSIZE))
+    def makecars(Car, TOTAL_CARS, spel):
+        cars = []
+
+        # Add every car in the game to the list cars.
+        for car in range(TOTAL_CARS):
+            cars.append(Car(int(spel.iloc[car]['car_id']), int(spel.iloc[car]['y']),
+                            int(spel.iloc[car]['x']), int(spel.iloc[car]['orient']),
+                            int(spel.iloc[car]['size'])))
+        return cars
+
+
 # Function to check if car number 1 is on the winning coordinates.
 def check():
-    if board[WIN_Y][WIN_X] == 1:
+    if Board.board[WIN_Y][WIN_X] == 1:
         return True
     else:
         return False
