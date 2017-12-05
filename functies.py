@@ -1,5 +1,7 @@
 import test_carclass as cc
 import random
+import copy
+import numpy as np
 
 
 
@@ -28,6 +30,7 @@ def randomize(cars, RANDOM_CARS):
 
 def random_two(cars, RANDOM_CARS):
     score_list = []
+    startboard = np.copy(cc.Board.board)
     for i in range(100):
         score = 0
         while (cc.check() == False):
@@ -39,5 +42,6 @@ def random_two(cars, RANDOM_CARS):
         print(cc.Board.board)
         print("You Won")
         print ("with " , score , " moves.")
+        cc.Board.board = copy.copy(startboard)
         score_list.append(score)
-    return score_list
+    print(score_list)
