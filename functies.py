@@ -24,3 +24,20 @@ def randomize(cars, RANDOM_CARS):
     print("You Won")
     print ("with " , score , " moves.")
     return score
+
+
+def random_two(cars, RANDOM_CARS):
+    score_list = []
+    for i in range(100):
+        score = 0
+        while (cc.check() == False):
+            r = random.randint(0, RANDOM_CARS)
+            d = dirry()
+            while(cars[r].move(d) == True):
+                cars[r].move(d)
+            score += 1
+        print(cc.Board.board)
+        print("You Won")
+        print ("with " , score , " moves.")
+        score_list.append(score)
+    return score_list
