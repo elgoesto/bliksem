@@ -73,7 +73,6 @@ class Car():
 
                             base_i = i + direction
                             base_j = j_coordinate = j
-
                         else:
                             return False
 
@@ -91,13 +90,12 @@ class Car():
 
                             base_i = i_coordinate = i
                             base_j = j + direction
-
                         else:
                             return False
 
                     Board.board[i_coordinate][j_coordinate] = EMPTY
                     Car(self.car_id, base_i, base_j, self.orient, self.size)
-                    check()
+                    return True
 
 class Board():
     "Class to keep track of the board"

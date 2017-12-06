@@ -5,4 +5,4 @@ import functies as fun
 cars = cc.Board.makecars(cc.Car, cc.TOTAL_CARS, cc.spel)
 
 # Apply the random algorithm to solve the game
-fun.randomize(cars, cc.RANDOM_CARS)
+fun.random_two(cars, cc.RANDOM_CARS)
