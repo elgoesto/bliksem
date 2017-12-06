@@ -38,7 +38,7 @@ def SaveBoard(board):
 def random_two(cars, RANDOM_CARS):
     score_list = []
     startboard = np.copy(cc.Board.board)
-    for i in range(10000):
+    for i in range(10):
         score = 0
         while (cc.check() == False):
             r = random.randint(0, RANDOM_CARS)
