@@ -14,16 +14,16 @@ main.py is the main program to run the different algorithms. In this file you wi
 * If you want to run the random algorithm:
   * fun.randomize(cars, cc.RANDOM_CARS)
 * If you want to run the optimized random alogrithm:
-  * rt.random_two(cars, cc.RANDOM_CARS)
+  * fun.random_two(cars, cc.RANDOM_CARS)
 * If you want to run the Depth First Search algorithm:
-  * TODO
+  * fun.BFS(cars, maxmoves)
   * You would probably want to run this algortihm on the games/testgame.csv board, cause this will take less time than the other boards. 
 
 carclass.py consists of two classes. One for the implementation of the cars and one for the implementation of the board. In this file you can choose which game you would like to play. You can do this by changing the game number, for example in stead of game2 in game3, in the following line of code:
 
 * spel = pd.read_csv("games/game2.csv", delimiter = "\t")
 
-functies.py consists of functions we have written to implement the algorithms. This file does need some clean-up work, but that's something on our TODO list. 
+functies.py consists of functions we have written to implement the algorithms. 
 
 
 ### Installing
