@@ -4,8 +4,7 @@ import numpy as np
 import time
 import matplotlib.pyplot as plt
 import itertools
-import test_carclass as cc
-import board as bb
+import carclass as cc
 
 
 # part of the ramdom algorithm, this picks a random direction.
@@ -32,13 +31,8 @@ def randomize(cars, RANDOM_CARS):
 
     plt.imshow(cc.Board.board)
     plt.show()
-<<<<<<< HEAD
-=======
     cc.Board.board = copy.copy(startboard)
 
-
-
->>>>>>> 11abc8e5b2b9d409f921298df48b3acb6eb01611
 
 # Function to make a copy of the startposition of the board.
 def SaveBoard(board):
@@ -49,7 +43,7 @@ def SaveBoard(board):
 def random_two(cars, RANDOM_CARS):
     score_list = []
     startboard = np.copy(cc.Board.board)
-    for i in range(10):
+    for i in range(5000):
         score = 0
         while (cc.check() == False):
             r = random.randint(0, RANDOM_CARS)
@@ -65,6 +59,7 @@ def random_two(cars, RANDOM_CARS):
     print(score_list)
     print(min(score_list))
 
+# NOT DONE YET
 def DFS(cars, RANDOM_CARS, MAX_MOVE):
     count = MAX_MOVE - 1
     print(cc.Board.board)
