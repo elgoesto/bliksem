@@ -1,6 +1,5 @@
-import test_carclass as cc
+import carclass as cc
 import functies as fun
-import test_randomtwo as rt
 import board
 
 def main():
@@ -11,8 +10,9 @@ def main():
     print("test board met bfs")
     fun.BFS(cars, 5)
 
-    # print ("test board met random")
-    # fun.randomize(cars, cc.RANDOM_CARS)
+    # apply the random algorithm
+    print ("test board met random")
+    fun.randomize(cars, cc.RANDOM_CARS)
 
 if __name__ == "__main__":
     main()
