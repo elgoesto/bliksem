@@ -17,6 +17,7 @@ main.py is the main program to run the different algorithms. In this file you wi
   * rt.random_two(cars, cc.RANDOM_CARS)
 * If you want to run the Depth First Search algorithm:
   * TODO
+  * You would probably want to run this algortihm on the games/testgame.csv board, cause this will take less time than the other boards. 
 
 carclass.py consists of two classes. One for the implementation of the cars and one for the implementation of the board. In this file you can choose which game you would like to play. You can do this by changing the game number, for example in stead of game2 in game3, in the following line of code:
 
@@ -41,6 +42,11 @@ To install the software you can use pip install. For example, type the following
 * First you will need to choose which game you would like to play. In the getting started section is explained how you could do this. 
 * Once you have choosen the game you will need to choose which algorithm you would like to run. You can read the explanation on how to do this in the getting started section. 
 * After you have done all of this you can run the main.py file. Make sure you do this while running python3 in your terminal.  
+
+## Other files
+* In the map Games are several csv files. Every csv files contains the data to implement the startingposition of all the cars.
+* In the file board.py some of our tests are written, you can ignore this file for now. 
+* Gitignore file
 
 ## Authors
 Lotte Nelson,
