@@ -11,8 +11,9 @@ def main():
     print("test board met bfs")
     fun.BFS(cars, 5)
 
-    # print ("test board met random")
-    # fun.randomize(cars, cc.RANDOM_CARS)
+    # apply the random algorithm
+    print ("test board met random")
+    fun.randomize(cars, cc.RANDOM_CARS)
 
 if __name__ == "__main__":
     main()

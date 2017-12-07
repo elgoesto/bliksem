@@ -20,6 +20,7 @@ def dirry():
 
 # This is the ramdom algorithm.
 def randomize(cars, RANDOM_CARS):
+    startboard = SaveBoard(cc.Board.board)
     score = 0
     while (cc.check() == False):
         r = random.randint(0, RANDOM_CARS)
@@ -33,7 +34,8 @@ def randomize(cars, RANDOM_CARS):
 
     plt.imshow(cc.Board.board)
     plt.show()
-    
+    cc.Board.board = copy.copy(startboard)
+
 
 
 
@@ -99,5 +101,6 @@ def BFS(car, maxmoves):
             if cc.check():
                 print("you won in", i + 1, "moves")
                 print("winning moves:",move )
+                cc.Board.board = copy.copy(startboard)
                 break
             cc.Board.board = copy.copy(startboard)
