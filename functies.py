@@ -8,9 +8,7 @@ import test_carclass as cc
 import board as bb
 
 
-
-
-# part of the ramdom algorithm, this picks a ramdom direction.
+# part of the ramdom algorithm, this picks a random direction.
 def dirry():
     d = random.randint(1,2)
     if d == 2:
@@ -33,15 +31,13 @@ def randomize(cars, RANDOM_CARS):
 
     plt.imshow(cc.Board.board)
     plt.show()
-    
 
-
-
+# Function to make a copy of the startposition of the board.
 def SaveBoard(board):
     startboard = copy.copy(cc.Board.board)
     return startboard
 
-
+# Random function Two, needs to be optimized. NOT DONE YET.
 def random_two(cars, RANDOM_CARS):
     score_list = []
     startboard = np.copy(cc.Board.board)
@@ -81,7 +77,7 @@ def DFS(cars, RANDOM_CARS, MAX_MOVE):
     else:
         print("geen oplossing")
 
-
+# Function for the implementation of a Breath First Search.
 def BFS(car, maxmoves):
 
     startboard = SaveBoard(cc.Board.board)
@@ -98,6 +94,6 @@ def BFS(car, maxmoves):
                     car[auto].move(1)
             if cc.check():
                 print("you won in", i + 1, "moves")
-                print("winning moves:",move )
+                print("winning moves:",move)
                 break
             cc.Board.board = copy.copy(startboard)

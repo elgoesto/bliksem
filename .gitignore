@@ -1,3 +1,9 @@
 # Ignore pycaches
 __pycache__/
 *.pyc
+
+test_randomtwo.py
+*.py
+
+board.py
+*.py
