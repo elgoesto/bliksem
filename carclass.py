@@ -11,24 +11,21 @@ import functies as fun
 spel = pd.read_csv("games/game2.csv", delimiter = "\t")
 
 # Define constants.
-VERTICAL = 1
-HORIZONTAL = 2
-DOWN = 1
-UP = -1
-RIGHT = 1
-LEFT = -1
-EMPTY = 0
 BSIZE = int(spel.iloc[0]["BSIZE"])
 TOTAL_CARS = len(spel.index)
 RANDOM_CARS = TOTAL_CARS - 1
-WIN_X = BSIZE - 1
-WIN_Y = int((WIN_X) / 2)
-
-# board = np.zeros((BSIZE, BSIZE))
-
 
 class Car():
     "class to make cars"
+
+    # Define Constants.
+    VERTICAL = 1
+    HORIZONTAL = 2
+    DOWN = 1
+    UP = -1
+    RIGHT = 1
+    LEFT = -1
+    EMPTY = 0
 
     def __init__(self, car_id, y, x, orient, size):
         self.y = y
@@ -36,18 +33,16 @@ class Car():
         self.car_id = car_id
         self.orient = orient
         self.size = size
-        if orient == VERTICAL:
+        if orient == self.VERTICAL:
             self.last = y + size
-        elif orient == HORIZONTAL:
+        elif orient == self.HORIZONTAL:
             self.last = x + size
 
         # Place every car on the board, based on its' orient.
-        if orient == VERTICAL:
+        if orient == self.VERTICAL:
             Board.board[y:size+y,x] = car_id
-        elif orient == HORIZONTAL:
+        elif orient == self.HORIZONTAL:
             Board.board[y,x:size+x] = car_id
-
-
 
     # Function to move the cars by changing the values on the board.
     def move(self, direction):
@@ -58,15 +53,15 @@ class Car():
                 if Board.board[i][j] == self.car_id:
 
                     # Check if the given move is valid, if so, move the car on the board.
-                    if self.orient == VERTICAL:
+                    if self.orient == self.VERTICAL:
 
-                        if (direction == DOWN and (i + self.size) < BSIZE and \
-                            Board.board[i + self.size][j] == EMPTY) \
+                        if (direction == self.DOWN and (i + self.size) < BSIZE and \
+                            Board.board[i + self.size][j] == self.EMPTY) \
                             or \
-                            (direction == UP and (i + direction) >= EMPTY and \
-                            Board.board[i + direction][j] == EMPTY):
+                            (direction == self.UP and (i + direction) >= self.EMPTY and \
+                            Board.board[i + direction][j] == self.EMPTY):
 
-                            if direction == DOWN:
+                            if direction == self.DOWN:
                                 i_coordinate = i
                             else:
                                 i_coordinate = i + self.size - 1
@@ -77,13 +72,13 @@ class Car():
                             return False
 
                     else:
-                        if (direction == RIGHT and (j + self.size) < BSIZE and \
-                            Board.board[i][j + self.size] == EMPTY) \
+                        if (direction == self.RIGHT and (j + self.size) < BSIZE and \
+                            Board.board[i][j + self.size] == self.EMPTY) \
                             or \
-                            (direction == LEFT and (j + direction) >= EMPTY and \
-                            Board.board[i][j + direction] == EMPTY):
+                            (direction == self.LEFT and (j + direction) >= self.EMPTY and \
+                            Board.board[i][j + direction] == self.EMPTY):
 
-                            if direction == RIGHT:
+                            if direction == self.RIGHT:
                                 j_coordinate = j
                             else:
                                 j_coordinate = j + self.size - 1
@@ -93,7 +88,7 @@ class Car():
                         else:
                             return False
 
-                    Board.board[i_coordinate][j_coordinate] = EMPTY
+                    Board.board[i_coordinate][j_coordinate] = self.EMPTY
                     Car(self.car_id, base_i, base_j, self.orient, self.size)
                     return True
 
@@ -110,9 +105,11 @@ class Board():
                             int(spel.iloc[car]['size'])))
         return cars
 
-
 # Function to check if car number 1 is on the winning coordinates.
 def check():
+    WIN_X = BSIZE - 1
+    WIN_Y = int((WIN_X) / 2)
+
     if Board.board[WIN_Y][WIN_X] == 1:
         return True
     else:
