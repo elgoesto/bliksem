@@ -1,8 +1,9 @@
-import test_carclass as cc
+import carclass as cc
 import random
 import copy
 import numpy as np
 import time
+import matplotlib.pyplot as plt
 
 
 
@@ -22,12 +23,17 @@ def randomize(cars, RANDOM_CARS):
         d = dirry()
         while(cars[r].move(d) == True):
             cars[r].move(d)
-        print(cc.Board.board)
-        time.sleep(0.5)
+        # print(cc.Board.board)
+        # time.sleep(0.5)
         score += 1
     print(cc.Board.board)
     print("You Won")
     print ("with " , score , " moves.")
+
+    plt.imshow(cc.Board.board)
+    plt.show()
+
+
     return score
 
 def SaveBoard(board):
