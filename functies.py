@@ -1,9 +1,12 @@
-import carclass as cc
 import random
 import copy
 import numpy as np
 import time
 import matplotlib.pyplot as plt
+import itertools
+import test_carclass as cc
+import board as bb
+
 
 
 
@@ -23,8 +26,6 @@ def randomize(cars, RANDOM_CARS):
         d = dirry()
         while(cars[r].move(d) == True):
             cars[r].move(d)
-        # print(cc.Board.board)
-        # time.sleep(0.5)
         score += 1
     print(cc.Board.board)
     print("You Won")
@@ -32,9 +33,9 @@ def randomize(cars, RANDOM_CARS):
 
     plt.imshow(cc.Board.board)
     plt.show()
+    
 
 
-    return score
 
 def SaveBoard(board):
     startboard = copy.copy(cc.Board.board)
@@ -79,3 +80,24 @@ def DFS(cars, RANDOM_CARS, MAX_MOVE):
                 cc.Board.board = copy.copy(startboard)
     else:
         print("geen oplossing")
+
+
+def BFS(car, maxmoves):
+
+    startboard = SaveBoard(cc.Board.board)
+    totcars = list(range(0, cc.TOTAL_CARS))
+    for i in range(maxmoves - 1):
+        movespace = list(itertools.product(totcars, repeat = i + 1))
+        print("amount of moves currently on:", i)
+        for move in movespace:
+            move = list(move)
+            for auto in move:
+                if car[auto].move(-1):
+                    car[auto].move(-1)
+                elif car[auto].move(1):
+                    car[auto].move(1)
+            if cc.check():
+                print("you won in", i + 1, "moves")
+                print("winning moves:",move )
+                break
+            cc.Board.board = copy.copy(startboard)
