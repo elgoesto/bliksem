@@ -3,8 +3,11 @@ import copy
 import numpy as np
 import time
 import matplotlib.pyplot as plt
+from matplotlib.colors import ListedColormap
+from matplotlib import colors
 import itertools
 import carclass as cc
+from statistics import mean
 
 
 # part of the ramdom algorithm, this picks a random direction.
@@ -16,7 +19,7 @@ def dirry():
 
 
 # This is the ramdom algorithm.
-def randomize(cars, RANDOM_CARS):
+def randomize(cars, RANDOM_CARS, TOTAL_CARS):
     startboard = SaveBoard(cc.Board.board)
     score = 0
     while (cc.check() == False):
@@ -25,13 +28,32 @@ def randomize(cars, RANDOM_CARS):
         while(cars[r].move(d) == True):
             cars[r].move(d)
         score += 1
+
     print(cc.Board.board)
     print("You Won")
     print ("with " , score , " moves.")
-
-    plt.imshow(cc.Board.board)
-    plt.show()
+    visualise(cc.Board.board, TOTAL_CARS)
     cc.Board.board = copy.copy(startboard)
+
+def visualise(board, TOTAL_CARS):
+    # cmap = colors.ListedColormap(["white", "red", "blue", "green", "yellow"])
+    color_lijst = ["white", "red"]
+    color_overig = ["yellow", "pink", "orange", "blue", "green", "black", "brown", "magenta", "purple", "violet", "beige", "cyan"]
+    for i in range(TOTAL_CARS-1):
+        color_lijst.append(color_overig[i%len(color_overig)])
+    print(color_lijst)
+
+    cmap = colors.ListedColormap(color_lijst)
+
+    bounds = []
+    for i in range(TOTAL_CARS+2):
+        bounds.append(i)
+    print(bounds)
+
+    fig, ax = plt.subplots()
+    norm = colors.BoundaryNorm(bounds, cmap.N)
+    ax.imshow(board, cmap=cmap, norm=norm)
+    return plt.show()
 
 
 # Function to make a copy of the startposition of the board.
@@ -43,21 +65,23 @@ def SaveBoard(board):
 def random_two(cars, RANDOM_CARS):
     score_list = []
     startboard = np.copy(cc.Board.board)
-    for i in range(5000):
-        score = 0
-        while (cc.check() == False):
-            r = random.randint(0, RANDOM_CARS)
-            d = dirry()
-            while(cars[r].move(d) == True):
-                cars[r].move(d)
-            score += 1
-        #print(cc.Board.board)
-        #print("You Won")
-        #print ("with " , score , " moves.")
-        cc.Board.board = copy.copy(startboard)
-        score_list.append(score)
-    print(score_list)
-    print(min(score_list))
+    for i in range(9):
+        for i in range(5000):
+            score = 0
+            while (cc.check() == False):
+                r = random.randint(0, RANDOM_CARS)
+                d = dirry()
+                while(cars[r].move(d) == True):
+                    cars[r].move(d)
+                score += 1
+            #print(cc.Board.board)
+            #print("You Won")
+            #print ("with " , score , " moves.")
+            cc.Board.board = copy.copy(startboard)
+            score_list.append(score)
+        # print(score_list)
+        print(min(score_list))
+        print(mean(score_list))
 
 # NOT DONE YET
 def DFS(cars, RANDOM_CARS, MAX_MOVE):
@@ -97,7 +121,6 @@ def BFS(car, maxmoves):
                     car[auto].move(1)
             if cc.check():
                 print("you won in", i + 1, "moves")
-                print("winning moves:",move )
-                cc.Board.board = copy.copy(startboard)
+                print("winning moves:", move)
                 break
             cc.Board.board = copy.copy(startboard)

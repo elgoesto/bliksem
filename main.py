@@ -7,14 +7,14 @@ def main():
     cars = cc.Board.makecars(cc.Car, cc.TOTAL_CARS, cc.spel)
 
     # Apply the BFS algorithm to solve the game
-    print("test board met bfs")
-    fun.BFS(cars, 5)
+    # print("test board met bfs")
+    # fun.BFS(cars, 5)
 
-    print()
-
+    # print()
+    #
     # Apply the random algorithm
     print ("test board met random")
-    fun.randomize(cars, cc.RANDOM_CARS)
+    fun.randomize(cars, cc.RANDOM_CARS, cc.TOTAL_CARS)
 
 if __name__ == "__main__":
     main()
