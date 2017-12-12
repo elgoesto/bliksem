@@ -31,7 +31,6 @@ def randomize(cars, RANDOM_CARS, dontmove = -1):
         dontmove = moves[r]
         moves = []
 
-    visualise(cc.Board.board, cc.TOTAL_CARS)
     print(cc.Board.board)
     print("You Won")
     print ("with " , score , " moves.")
@@ -95,7 +94,7 @@ def possible_moves(cars, dontmove = -1):
 
     return possible_moves
 
-def DFS(cars, MAX_MOVE, dontmove = -1):
+def DFS(cars, MAX_MOVE, dontmove = -1, movelist = []):
     if cc.check() == True:
         print(cc.Board.board)
         sys.exit("you won")
