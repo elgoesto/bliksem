@@ -17,16 +17,13 @@ def visualise(board, TOTAL_CARS):
     color_overig = ["yellow", "pink", "orange", "blue", "green", "black", "brown", "magenta", "purple", "violet", "beige", "cyan"]
     for i in range(TOTAL_CARS-1):
         color_lijst.append(color_overig[i%len(color_overig)])
-    print(color_lijst)
-    print("")
 
     cmap = colors.ListedColormap(color_lijst)
 
-    bounds = []
-    for i in range(TOTAL_CARS+2):
-        bounds.append(i)
-    print(bounds)
-    print("")
+    bounds = [0.0]
+    for i in range(TOTAL_CARS+1):
+        bound = i + 0.5
+        bounds.append(bound)
 
     fig, ax = plt.subplots()
     norm = colors.BoundaryNorm(bounds, cmap.N)
