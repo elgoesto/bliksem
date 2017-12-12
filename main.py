@@ -9,13 +9,13 @@ def main():
     # Initialize cars on the board.
     cars = cc.Board.makecars(cc.Car, cc.TOTAL_CARS, cc.spel)
 
-    # print("test board met BFS")
-    # bfs.BFS(cars, 5)
-    #
-    # print("")
+    print("test board met BFS")
+    bfs.BFS(cars, 5)
 
-    print ("test board met random")
-    rand.randomize(cars, cc.RANDOM_CARS, cc.TOTAL_CARS)
+    # print("")
+    #
+    # print ("test board met random")
+    # rand.randomize(cars, cc.RANDOM_CARS, cc.TOTAL_CARS)
     #
     # print("")
     #

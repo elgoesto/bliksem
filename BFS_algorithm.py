@@ -15,10 +15,9 @@ def BFS(car, maxmoves):
 
     startboard = fun.SaveBoard(cc.Board.board)
     totcars = list(range(0, cc.TOTAL_CARS))
-    for i in range(maxmoves - 1):
-        movespace = list(itertools.product(totcars, repeat = i + 1))
+    for i in range(maxmoves ):
         print("amount of moves currently on:", i)
-        for move in movespace:
+        for move in itertools.product(totcars, repeat = i + 1):
             move = list(move)
             for auto in move:
                 if car[auto].move(-1):
