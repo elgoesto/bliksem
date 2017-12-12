@@ -1,8 +1,8 @@
 import carclass as cc
 import functies as fun
-import random_algorithm as rand
-import BFS_algorithm as bfs
-import DFS_algorithm as dfs
+from Algorithms import random_algorithm as rand
+from Algorithms import BFS_algorithm as bfs
+from Algorithms import DFS_algorithm as dfs
 from numba import jit
 # import board
 
