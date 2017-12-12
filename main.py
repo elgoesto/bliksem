@@ -10,7 +10,7 @@ def main():
     cars = cc.Board.makecars(cc.Car, cc.TOTAL_CARS, cc.spel)
 
     print("Choose 1 to run the random algorithm.")
-    print("Choose 2 to run the Bredth First Search algorithm.")
+    print("Choose 2 to run the Breadth First Search algorithm.")
     print("Choose 3 to run the Depth First Search algorithm.")
 
     var = input("Please enter something: ")
