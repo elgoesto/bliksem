@@ -16,11 +16,9 @@ def main():
     var = input("Please enter something: ")
     print(var)
 
-    # print("test board met BFS")
-    # bfs.BFS(cars, 5)
-    #
-    # print("")
-    if int(var) == 1:
+    if var.isalpha():
+        print("Error, you did not enter one of these options.")
+    elif int(var) == 1:
         print ("Test board with random algorithm.")
         rand.randomize(cars, cc.RANDOM_CARS, cc.TOTAL_CARS)
     elif int(var) == 2:
@@ -32,10 +30,6 @@ def main():
     else:
         print("Error, you did not enter one of these options.")
 
-    # print("")
-    #
-    # print("test board met DFS")
-    # dfs.DFS(cars, 5)
 
 if __name__ == "__main__":
     main()
