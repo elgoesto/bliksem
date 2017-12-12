@@ -14,7 +14,6 @@ def main():
     print("Choose 3 to run the Depth First Search algorithm.")
 
     var = input("Please enter something: ")
-    print(var)
 
     if var.isalpha():
         print("Error, you did not enter one of these options.")
@@ -26,7 +25,7 @@ def main():
         bfs.BFS(cars, 7)
     elif int(var) == 3:
         print("Test board with Depth First Search.")
-        dfs.DFS(cars, 5)
+        dfs.DFS(cars, 16)
     else:
         print("Error, you did not enter one of these options.")
 
