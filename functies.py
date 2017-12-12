@@ -31,6 +31,7 @@ def randomize(cars, RANDOM_CARS, dontmove = -1):
         dontmove = moves[r]
         moves = []
 
+    visualise(cc.Board.board, cc.TOTAL_CARS)
     print(cc.Board.board)
     print("You Won")
     print ("with " , score , " moves.")
@@ -69,11 +70,14 @@ def random_two(cars, RANDOM_CARS):
         for i in range(5000):
             score = 0
             while (cc.check() == False):
-                r = random.randint(0, RANDOM_CARS)
+                moves = possible_moves(cars, dontmove)
+                r = random.randint(0, (len(moves) - 1))
                 d = dirry()
-                while(cars[r].move(d) == True):
-                    cars[r].move(d)
+                while(cars[moves[r]].move(d) == True):
+                    cars[moves[r]].move(d)
                 score += 1
+                dontmove = moves[r]
+                moves = []
             #print(cc.Board.board)
             #print("You Won")
             #print ("with " , score , " moves.")
