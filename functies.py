@@ -19,21 +19,21 @@ def dirry():
 
 
 # This is the ramdom algorithm.
-def randomize(cars, RANDOM_CARS, TOTAL_CARS):
-    startboard = SaveBoard(cc.Board.board)
+def randomize(cars, RANDOM_CARS, dontmove = -1):
     score = 0
     while (cc.check() == False):
-        r = random.randint(0, RANDOM_CARS)
+        moves = possible_moves(cars, dontmove)
+        r = random.randint(0, (len(moves) - 1))
         d = dirry()
-        while(cars[r].move(d) == True):
-            cars[r].move(d)
+        while(cars[moves[r]].move(d) == True):
+            cars[moves[r]].move(d)
         score += 1
+        dontmove = moves[r]
+        moves = []
 
     print(cc.Board.board)
     print("You Won")
     print ("with " , score , " moves.")
-    visualise(cc.Board.board, TOTAL_CARS)
-    cc.Board.board = copy.copy(startboard)
 
 def visualise(board, TOTAL_CARS):
     # cmap = colors.ListedColormap(["white", "red", "blue", "green", "yellow"])
@@ -83,26 +83,34 @@ def random_two(cars, RANDOM_CARS):
         print(min(score_list))
         print(mean(score_list))
 
-# NOT DONE YET
-def DFS(cars, RANDOM_CARS, MAX_MOVE):
+def possible_moves(cars, dontmove = -1):
+    possible_moves = []
+    for i in range (cc.TOTAL_CARS):
+        if cars[i].possible_move() == True and i != dontmove:
+            possible_moves.append(i)
+
+    return possible_moves
+
+def DFS(cars, MAX_MOVE, dontmove = -1):
+    if cc.check() == True:
+        print(cc.Board.board)
+        sys.exit("you won")
     count = MAX_MOVE - 1
-    print(cc.Board.board)
-    startboard = SaveBoard(cc.Board.board)
     if count > 0:
-        for i in range (RANDOM_CARS):
-            if cars[i].move(1) :
-                while bool(cars[i].move(1)) == True:
-                    cars[i].move(1)
+        moves = possible_moves(cars, dontmove)
+        for car in moves:
+            if cars[car].move(1):
+                while bool(cars[car].move(1)) == True:
+                    cars[car].move(1)
+                DFS(cars, count, car)
+                while bool(cars[car].move(-1)) == True:
+                    cars[car].move(-1)
             else:
-                while bool(cars[i].move(-1)) == True:
-                    cars[i].move(-1)
-            print(cc.Board.board)
-            time.sleep(0.3)
-            DFS(cars, RANDOM_CARS, count)
-            if count == 1:
-                cc.Board.board = copy.copy(startboard)
-    else:
-        print("geen oplossing")
+                while bool(cars[car].move(-1)) == True:
+                    cars[car].move(-1)
+                DFS(cars, count, car)
+                while bool(cars[car].move(1)) == True:
+                    cars[car].move(1)
 
 # Function for the implementation of a Breath First Search.
 def BFS(car, maxmoves):

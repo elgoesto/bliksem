@@ -44,6 +44,34 @@ class Car():
         elif orient == self.HORIZONTAL:
             Board.board[y,x:size+x] = car_id
 
+    def possible_move(self):
+        for i in range(BSIZE):
+            for j in range(BSIZE):
+
+                # If you find the location of the car, proceed.
+                if Board.board[i][j] == self.car_id:
+
+                    # Check if the car can move
+                    if self.orient == self.VERTICAL:
+
+                        if ((i + self.size) < BSIZE and \
+                            Board.board[i + self.size][j] == self.EMPTY) \
+                            or \
+                            ((i - 1) >= self.EMPTY and \
+                            Board.board[i - 1][j] == self.EMPTY):
+
+                            return True
+                        return False
+                    else:
+                        if ((j + self.size) < BSIZE and \
+                            Board.board[i][j + self.size] == self.EMPTY) \
+                            or \
+                            ((j - 1) >= self.EMPTY and \
+                            Board.board[i][j - 1] == self.EMPTY):
+
+                            return True
+                        return False
+
     # Function to move the cars by changing the values on the board.
     def move(self, direction):
         for i in range(BSIZE):
