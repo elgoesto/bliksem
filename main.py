@@ -3,8 +3,10 @@ import functies as fun
 import random_algorithm as rand
 import BFS_algorithm as bfs
 import DFS_algorithm as dfs
+from numba import jit
 # import board
 
+@jit
 def main():
     # Initialize cars on the board.
     cars = cc.Board.makecars(cc.Car, cc.TOTAL_CARS, cc.spel)
@@ -25,7 +27,7 @@ def main():
         bfs.BFS(cars, 7)
     elif int(var) == 3:
         print("Test board with Depth First Search.")
-        dfs.DFS(cars, 16)
+        dfs.DFS(cars, 30)
     else:
         print("Error, you did not enter one of these options.")
 
