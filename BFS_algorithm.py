@@ -7,6 +7,7 @@ from matplotlib.colors import ListedColormap
 from matplotlib import colors
 import itertools
 import carclass as cc
+import sys
 from statistics import mean
 import functies as fun
 
@@ -21,11 +22,13 @@ def BFS(car, maxmoves):
             move = list(move)
             for auto in move:
                 if car[auto].move(-1):
-                    car[auto].move(-1)
+                    while car[auto].move(-1) == True:
+                        car[auto].move(-1)
                 elif car[auto].move(1):
-                    car[auto].move(1)
+                    while car[auto].move(1) == True:
+                        car[auto].move(1)
             if cc.check():
                 print("you won in", i + 1, "moves")
                 print("winning moves:", move)
-                break
+                sys.exit()
             cc.Board.board = copy.copy(startboard)

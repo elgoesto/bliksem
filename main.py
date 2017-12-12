@@ -23,7 +23,7 @@ def main():
         rand.randomize(cars, cc.RANDOM_CARS, cc.TOTAL_CARS)
     elif int(var) == 2:
         print("Test board with Breadth First Search.")
-        bfs.BFS(cars, 5)
+        bfs.BFS(cars, 7)
     elif int(var) == 3:
         print("Test board with Depth First Search.")
         dfs.DFS(cars, 5)
