@@ -10,21 +10,27 @@ import carclass as cc
 from statistics import mean
 
 
+# Function for the visualisation of the state of the board.
+def visualise(board, TOTAL_CARS, RANDOM_CARS):
+    color_list= ["white", "red"]
+    remaining_colors = ["yellow", "pink", "orange", "blue", "green", "black",
+    "brown", "magenta", "purple", "violet", "beige", "cyan"]
 
-def visualise(board, TOTAL_CARS):
-    # cmap = colors.ListedColormap(["white", "red", "blue", "green", "yellow"])
-    color_lijst = ["white", "red"]
-    color_overig = ["yellow", "pink", "orange", "blue", "green", "black", "brown", "magenta", "purple", "violet", "beige", "cyan"]
-    for i in range(TOTAL_CARS-1):
-        color_lijst.append(color_overig[i%len(color_overig)])
+    # For every car on the board, except for the red car, append a color
+    # from remaining_colors to color_list.
+    for i in range(RANDOM_CARS):
+        color_list.append(remaining_colors[i % len(remaining_colors)])
 
-    cmap = colors.ListedColormap(color_lijst)
-
+    cmap = colors.ListedColormap(color_list)
     bounds = [0.0]
-    for i in range(TOTAL_CARS+1):
+    NUMBER_OF_BOUNDS = TOTAL_CARS + 1
+
+    # Set the bounds so that you can assign the colors to the white space and cars.
+    for i in range(NUMBER_OF_BOUNDS):
         bound = i + 0.5
         bounds.append(bound)
 
+    # Create a plot to show all of the cars, with their colors.
     fig, ax = plt.subplots()
     norm = colors.BoundaryNorm(bounds, cmap.N)
     ax.imshow(board, cmap=cmap, norm=norm)
@@ -37,13 +43,13 @@ def SaveBoard(board):
     return startboard
 
 
-
+# Function to create a list of all of the possible moves within the current
+# state of the board.
 def possible_moves(cars, dontmove = -1):
     possible_moves = []
-    for i in range (cc.TOTAL_CARS):
+    for i in range(cc.TOTAL_CARS):
         if cars[i].possible_move() == True and i != dontmove:
             possible_moves.append(i)
-
     return possible_moves
 
 

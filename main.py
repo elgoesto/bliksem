@@ -8,6 +8,11 @@ from numba import jit
 
 @jit
 def main():
+    # Create constants.
+    RANDOM = 1
+    BFS = 2
+    DFS = 3
+
     # Initialize cars on the board.
     cars = cc.Board.makecars(cc.Car, cc.TOTAL_CARS, cc.spel)
 
@@ -15,19 +20,25 @@ def main():
     print("Choose 2 to run the Breadth First Search algorithm.")
     print("Choose 3 to run the Depth First Search algorithm.")
 
+    # Prompt the user for input.
     var = input("Please enter something: ")
 
+    # Check the user input and implement the choosen algorithm.
     if var.isalpha():
         print("Error, you did not enter one of these options.")
-    elif int(var) == 1:
-        print ("Test board with random algorithm.")
+
+    elif int(var) == RANDOM:
+        print ("Start random algorithm.")
         rand.randomize(cars, cc.RANDOM_CARS, cc.TOTAL_CARS)
-    elif int(var) == 2:
-        print("Test board with Breadth First Search.")
-        bfs.BFS(cars, 7)
-    elif int(var) == 3:
-        print("Test board with Depth First Search.")
-        dfs.DFS(cars, 30)
+
+    elif int(var) == BFS:
+        print("Start Breadth First Search algorithm.")
+        bfs.BFS(cars, 25)
+
+    elif int(var) == DFS:
+        print("Start Depth First Search algorithm.")
+        dfs.DFS(cars, 40)
+
     else:
         print("Error, you did not enter one of these options.")
 

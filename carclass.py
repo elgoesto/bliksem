@@ -8,7 +8,7 @@ import functies as fun
 
 # Import the csv file of the game you want to play.
 ' pick a board between 1 - 7:  "games/game[...].csv" '
-spel = pd.read_csv("games/testgame.csv", delimiter = "\t")
+spel = pd.read_csv("games/game2.csv", delimiter = "\t")
 
 # Define constants.
 BSIZE = int(spel.iloc[0]["BSIZE"])
@@ -40,9 +40,9 @@ class Car():
 
         # Place every car on the board, based on its' orient.
         if orient == self.VERTICAL:
-            Board.board[y:size+y,x] = car_id
+            Board.board[y:(size + y), x] = car_id
         elif orient == self.HORIZONTAL:
-            Board.board[y,x:size+x] = car_id
+            Board.board[y, x:(size + x)] = car_id
 
     def possible_move(self):
         for i in range(BSIZE):
@@ -122,18 +122,18 @@ class Car():
 
 class Board():
     "Class to keep track of the board"
+
     board = np.zeros((BSIZE, BSIZE))
+    # Function to create all the cars of the chosen ,'spel', game and add them to cars.
     def makecars(Car, TOTAL_CARS, spel):
         cars = []
-
-        # Add every car in the game to the list cars.
         for car in range(TOTAL_CARS):
             cars.append(Car(int(spel.iloc[car]['car_id']), int(spel.iloc[car]['y']),
                             int(spel.iloc[car]['x']), int(spel.iloc[car]['orient']),
                             int(spel.iloc[car]['size'])))
         return cars
 
-# Function to check if car number 1 is on the winning coordinates.
+# Function to check if car number, with card_id 1 is on the winning coordinates.
 def check():
     WIN_X = BSIZE - 1
     WIN_Y = int((WIN_X) / 2)
