@@ -17,7 +17,6 @@ First, the user have to implement the game to solve in classes/carclass Game().
 Due to the user friendly interface it is pretty straigth forward to solve a board. The program will promt the user for wich algorithm you want to solve the selected board with.
 
 
-
 ### Installing
 To run this program you will need to install the following software:
 * Python 3
@@ -34,12 +33,13 @@ To install the software you can use pip install. For example, type the following
 
 ## Instructions, to run the program
 * First you will need to choose which game you would like to play. In the getting started section is explained how you could do this.
-* Once you have choosen the game you will need to choose which algorithm you would like to run. You can read the explanation on how to do this in the getting started section.
-* After you have done all of this you can run the main.py file. Make sure you do this while running python3 in your terminal.  
+* Once you have chosen the game you can run the main.py file. Make sure you do this while running python3 in your terminal.
+* When you run the main.py file you will be prompted with the questions which algorithm you would like to run.  
 
 ## Other files
 * In the map Games are several csv files. Every csv files contains the data to implement the startingposition of all the cars.
-* In the file board.py some of our tests are written, you can ignore this file for now.
+* In the map classes is the file classtest.py, all the classes used to run the program are stated in this file. 
+* In the map functions is the file functions.py, all of the functions used to run the program are stated in this file.
 * Gitignore file
 
 ## Authors
