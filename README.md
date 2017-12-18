@@ -24,7 +24,7 @@ To run this program you will need to install the following software:
 * Numpy
 * Pandas
 * Matplotlib
-* itertools
+* Itertools
 
 
 To install the software you can use pip install. For example, type the following commands in your terminal to install matplotlib:
