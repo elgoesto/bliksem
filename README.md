@@ -9,6 +9,11 @@ In Rush Hour, a sliding block logic game, you have to battle the gridlock as you
 ## Getting Started
 When you download this project you will get 3 different alogrithms to solve Rush Hour boards with different sizes and difficulties. The goal is to solve the game with as less moves as possible. 
 
+First, the user have to implement the game to solve in classes/carclass Game().
+
+<p>' pick a board between 1 - 7:  "games/game[...].csv" ' </p>
+<p> game = pd.read_csv("games/testgame.csv", delimiter = "\t") </p>
+
 Due to the user friendly interface it is pretty straigth forward to solve a board. The program will promt the user for wich algorithm you want to solve the selected board with.
 
 
@@ -19,6 +24,8 @@ To run this program you will need to install the following software:
 * Numpy
 * Pandas
 * Matplotlib
+* itertools
+
 
 To install the software you can use pip install. For example, type the following commands in your terminal to install matplotlib:
 
