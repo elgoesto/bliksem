@@ -1,19 +1,19 @@
 import numpy as np
 import csv
 import pandas as pd
-import random
-import sys
-import functies as fun
 
 
-# Import the csv file of the game you want to play.
-' pick a board between 1 - 7:  "games/game[...].csv" '
-spel = pd.read_csv("games/game2.csv", delimiter = "\t")
 
-# Define constants.
-BSIZE = int(spel.iloc[0]["BSIZE"])
-TOTAL_CARS = len(spel.index)
-RANDOM_CARS = TOTAL_CARS - 1
+class Game():
+
+    # Import the csv file of the game you want to play.
+    ' pick a board between 1 - 7:  "games/game[...].csv" '
+    game = pd.read_csv("games/testgame.csv", delimiter = "\t")
+
+    # Define constants.
+    BSIZE = int(game.iloc[0]["BSIZE"])
+    TOTAL_CARS = len(game.index)
+    RANDOM_CARS = TOTAL_CARS - 1
 
 class Car():
     "class to make cars"
@@ -45,8 +45,8 @@ class Car():
             Board.board[y, x:(size + x)] = car_id
 
     def possible_move(self):
-        for i in range(BSIZE):
-            for j in range(BSIZE):
+        for i in range(Game.BSIZE):
+            for j in range(Game.BSIZE):
 
                 # If you find the location of the car, proceed.
                 if Board.board[i][j] == self.car_id:
@@ -54,7 +54,7 @@ class Car():
                     # Check if the car can move
                     if self.orient == self.VERTICAL:
 
-                        if ((i + self.size) < BSIZE and \
+                        if ((i + self.size) < Game.BSIZE and \
                             Board.board[i + self.size][j] == self.EMPTY) \
                             or \
                             ((i - 1) >= self.EMPTY and \
@@ -63,7 +63,7 @@ class Car():
                             return True
                         return False
                     else:
-                        if ((j + self.size) < BSIZE and \
+                        if ((j + self.size) < Game.BSIZE and \
                             Board.board[i][j + self.size] == self.EMPTY) \
                             or \
                             ((j - 1) >= self.EMPTY and \
@@ -74,8 +74,8 @@ class Car():
 
     # Function to move the cars by changing the values on the board.
     def move(self, direction):
-        for i in range(BSIZE):
-            for j in range(BSIZE):
+        for i in range(Game.BSIZE):
+            for j in range(Game.BSIZE):
 
                 # If you find the location of the car, proceed.
                 if Board.board[i][j] == self.car_id:
@@ -83,7 +83,7 @@ class Car():
                     # Check if the given move is valid, if so, move the car on the board.
                     if self.orient == self.VERTICAL:
 
-                        if (direction == self.DOWN and (i + self.size) < BSIZE and \
+                        if (direction == self.DOWN and (i + self.size) < Game.BSIZE and \
                             Board.board[i + self.size][j] == self.EMPTY) \
                             or \
                             (direction == self.UP and (i + direction) >= self.EMPTY and \
@@ -100,7 +100,7 @@ class Car():
                             return False
 
                     else:
-                        if (direction == self.RIGHT and (j + self.size) < BSIZE and \
+                        if (direction == self.RIGHT and (j + self.size) < Game.BSIZE and \
                             Board.board[i][j + self.size] == self.EMPTY) \
                             or \
                             (direction == self.LEFT and (j + direction) >= self.EMPTY and \
@@ -123,19 +123,24 @@ class Car():
 class Board():
     "Class to keep track of the board"
 
-    board = np.zeros((BSIZE, BSIZE))
-    # Function to create all the cars of the chosen ,'spel', game and add them to cars.
-    def makecars(Car, TOTAL_CARS, spel):
+    board = np.zeros((Game.BSIZE, Game.BSIZE))
+    # Function to create all the cars of the chosen ,'game', game and add them to cars.
+    def makecars(Car, TOTAL_CARS, game):
         cars = []
         for car in range(TOTAL_CARS):
-            cars.append(Car(int(spel.iloc[car]['car_id']), int(spel.iloc[car]['y']),
-                            int(spel.iloc[car]['x']), int(spel.iloc[car]['orient']),
-                            int(spel.iloc[car]['size'])))
+            cars.append(Car(int(game.iloc[car]['car_id']), int(game.iloc[car]['y']),
+                            int(game.iloc[car]['x']), int(game.iloc[car]['orient']),
+                            int(game.iloc[car]['size'])))
         return cars
+
+
+class Lists():
+    movelist = []
+    boardlist = []
 
 # Function to check if car number, with card_id 1 is on the winning coordinates.
 def check():
-    WIN_X = BSIZE - 1
+    WIN_X = Game.BSIZE - 1
     WIN_Y = int((WIN_X) / 2)
 
     if Board.board[WIN_Y][WIN_X] == 1:

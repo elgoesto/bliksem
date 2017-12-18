@@ -1,18 +1,11 @@
-import random
 import copy
-import numpy as np
-import time
-import matplotlib.pyplot as plt
-from matplotlib.colors import ListedColormap
-from matplotlib import colors
-import itertools
 from classes import carclass as cc
-from statistics import mean
-from functies import functies as fun
+from functions import functions as fun
 import sys
 
-movelist = []
-boardlist = []
+
+
+
 
 def DFST(cars, MAX_MOVE, dontmove = -1):
     count = MAX_MOVE - 1
@@ -31,24 +24,24 @@ def DFST(cars, MAX_MOVE, dontmove = -1):
 
             while cars[car].move(base) == True:
                 cars[car].move(base)
-            movelist.append(car_number)
-            print(movelist)
-            boardlist.append(copy.copy(cc.Board.board))
+            cc.Lists.movelist.append(car_number)
+            print(cc.Lists.movelist)
+            cc.Lists.boardlist.append(copy.copy(cc.Board.board))
 
             if cc.check() == True:
                 print(cc.Board.board)
-                print(movelist)
-                for board in boardlist:
+                print(cc.Lists.movelist)
+                for board in cc.Lists.boardlist:
                     print(board)
                     print("")
-                    print(movelist)
+                    print(cc.Lists.movelist)
                 sys.exit("you won")
 
-            DFS(cars, count, car)
+            DFST(cars, count, car)
             while bool(cars[car].move(place_back)) == True:
                 cars[car].move(place_back)
-                movelist.pop()
-                boardlist.pop()
+            cc.Lists.movelist.pop()
+            cc.Lists.boardlist.pop()
 
 
 
@@ -65,7 +58,7 @@ def DFS(cars, MAX_MOVE, dontmove = -1):
                 movelist.append(car + 1)
                 print(movelist)
                 boardlist.append(copy.copy(cc.Board.board))
-                #time.sleep(0.1)
+
                 if cc.check() == True:
                     print(cc.Board.board)
                     print(movelist)
@@ -80,7 +73,7 @@ def DFS(cars, MAX_MOVE, dontmove = -1):
             else:
                 while bool(cars[car].move(-1)) == True:
                     cars[car].move(-1)
-                #time.sleep(0.1)
+
                 movelist.append(car + 1)
                 print(movelist)
                 boardlist.append(copy.copy(cc.Board.board))

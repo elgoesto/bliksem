@@ -1,8 +1,8 @@
 from classes import carclass as cc
-from functies import functies as fun
-from Algorithms import random_algorithm as rand
-from Algorithms import BFS_algorithm as bfs
-from Algorithms import DFS_algorithm as dfs
+from functions import functions as fun
+from algorithms import random_algorithm as rand
+from algorithms import BFS_algorithm as bfs
+from algorithms import DFS_algorithm as dfs
 from numba import jit
 # import board
 
@@ -15,7 +15,7 @@ def main():
     DFS_Lotte = 4
 
     # Initialize cars on the board.
-    cars = cc.Board.makecars(cc.Car, cc.TOTAL_CARS, cc.spel)
+    cars = cc.Board.makecars(cc.Car, cc.Game.TOTAL_CARS, cc.Game.game)
 
     print("Choose 1 to run the random algorithm.")
     print("Choose 2 to run the Breadth First Search algorithm.")
@@ -31,7 +31,7 @@ def main():
 
     elif int(var) == RANDOM:
         print ("Start random algorithm.")
-        rand.randomize(cars, cc.RANDOM_CARS, cc.TOTAL_CARS)
+        rand.randomize(cars, cc.Game.RANDOM_CARS, cc.Game.TOTAL_CARS)
 
     elif int(var) == BFS:
         print("Start Breadth First Search algorithm.")

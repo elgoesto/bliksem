@@ -1,14 +1,9 @@
 import random
 import copy
 import numpy as np
-import time
-import matplotlib.pyplot as plt
-from matplotlib.colors import ListedColormap
-from matplotlib import colors
-import itertools
 from classes import carclass as cc
 from statistics import mean
-from functies import functies as fun
+from functions import functions as fun
 
 
 # Function to pick a random direction, left/right or up/down.
@@ -42,7 +37,7 @@ def randomize(cars, RANDOM_CARS, TOTAL_CARS, dontmove = -1):
     print(cc.Board.board)
     print("You Won")
     print ("with " , score , " moves.")
-    fun.visualise(cc.Board.board, cc.TOTAL_CARS, cc.RANDOM_CARS)
+    fun.visualise(cc.Board.board, cc.Game.TOTAL_CARS, cc.Game.RANDOM_CARS)
 
 # Keep repeating the random function as above, and append the scores to a list.
 def random_two(cars, RANDOM_CARS, TOTAL_CARS, dontmove = -1):
