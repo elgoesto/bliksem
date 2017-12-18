@@ -44,12 +44,14 @@ def DFST(cars, MAX_MOVE, dontmove = -1):
                     print(movelist)
                 sys.exit("you won")
 
+            DFS(cars, count, car)
             while bool(cars[car].move(place_back)) == True:
                 cars[car].move(place_back)
-            movelist.pop()
-            boardlist.pop()
+                movelist.pop()
+                boardlist.pop()
 
-            DFS(cars, count, car)
+
+
 
 
 def DFS(cars, MAX_MOVE, dontmove = -1):

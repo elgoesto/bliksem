@@ -43,7 +43,7 @@ def main():
 
     elif int(var) == DFS_Lotte:
         print("Start test Lotte")
-        dfs.DFST(cars, 15)
+        dfs.DFST(cars, 17)
 
     else:
         print("Error, you did not enter one of these options.")
