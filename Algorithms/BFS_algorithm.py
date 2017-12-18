@@ -6,10 +6,10 @@ import matplotlib.pyplot as plt
 from matplotlib.colors import ListedColormap
 from matplotlib import colors
 import itertools
-import carclass as cc
+from classes import carclass as cc
 import sys
 from statistics import mean
-import functies as fun
+from functies import functies as fun
 
 # Function for the implementation of a Breath First Search.
 def BFS(car, maxmoves):

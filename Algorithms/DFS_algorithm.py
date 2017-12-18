@@ -6,9 +6,9 @@ import matplotlib.pyplot as plt
 from matplotlib.colors import ListedColormap
 from matplotlib import colors
 import itertools
-import carclass as cc
+from classes import carclass as cc
 from statistics import mean
-import functies as fun
+from functies import functies as fun
 import sys
 
 movelist = []

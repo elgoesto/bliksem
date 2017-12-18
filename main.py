@@ -1,5 +1,5 @@
-import carclass as cc
-import functies as fun
+from classes import carclass as cc
+from functies import functies as fun
 from Algorithms import random_algorithm as rand
 from Algorithms import BFS_algorithm as bfs
 from Algorithms import DFS_algorithm as dfs
