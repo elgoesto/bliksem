@@ -39,6 +39,7 @@ def main():
 
     elif int(var) == DFS:
         print("Start Depth First Search algorithm.")
+        print(cc.Board.board)
         dfs.DFS(cars, 15)
 
     elif int(var) == DFS_Lotte:

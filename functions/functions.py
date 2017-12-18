@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 from matplotlib.colors import ListedColormap
 from matplotlib import colors
 from classes import carclass as cc
+import random
 
 
 
@@ -46,4 +47,5 @@ def possible_moves(cars, dontmove = -1):
     for i in range(cc.Game.TOTAL_CARS):
         if cars[i].possible_move() == True and i != dontmove:
             possible_moves.append(i)
+    random.shuffle(possible_moves)
     return possible_moves

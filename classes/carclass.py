@@ -8,7 +8,7 @@ class Game():
 
     # Import the csv file of the game you want to play.
     ' pick a board between 1 - 7:  "games/game[...].csv" '
-    game = pd.read_csv("games/testgame.csv", delimiter = "\t")
+    game = pd.read_csv("games/game2.csv", delimiter = "\t")
 
     # Define constants.
     BSIZE = int(game.iloc[0]["BSIZE"])
@@ -43,6 +43,13 @@ class Car():
             Board.board[y:(size + y), x] = car_id
         elif orient == self.HORIZONTAL:
             Board.board[y, x:(size + x)] = car_id
+
+    def resetcar(self):
+        if self.orient == self.VERTICAL:
+            Board.board[self.y:(self.size + self.y), self.x] = 0
+        elif self.orient == self.HORIZONTAL:
+            Board.board[self.y, self.x:(self.size + self.x)] = 0
+
 
     def possible_move(self):
         for i in range(Game.BSIZE):
@@ -96,6 +103,8 @@ class Car():
 
                             base_i = i + direction
                             base_j = j_coordinate = j
+                            self.x = base_j
+                            self.y = base_i
                         else:
                             return False
 
@@ -113,6 +122,8 @@ class Car():
 
                             base_i = i_coordinate = i
                             base_j = j + direction
+                            self.x = base_j
+                            self.y = base_i
                         else:
                             return False
 
