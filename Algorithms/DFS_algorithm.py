@@ -52,41 +52,31 @@ def DFS(cars, MAX_MOVE, dontmove = -1):
     if count > 0:
         moves = fun.possible_moves(cars, dontmove)
         for car in moves:
-            if cars[car].move(1):
-                while bool(cars[car].move(1)) == True:
-                    cars[car].move(1)
-                movelist.append(car + 1)
-                print(movelist)
-                boardlist.append(copy.copy(cc.Board.board))
-
-                if cc.check() == True:
-                    print(cc.Board.board)
-                    print(movelist)
-                    for board in boardlist:
-                        print(board)
-                        print("")
-                        print(movelist)
-                    sys.exit("you won")
-                DFS(cars, count, car)
+            initialx = cars[car].x
+            initialy = cars[car].y
+            if cars[car].move(-1):
                 while bool(cars[car].move(-1)) == True:
                     cars[car].move(-1)
+                cc.Lists.movelist.append(car + 1)
+                if cc.check() == True:
+                    print(cc.Board.board)
+                    print("")
+                    print(movelist)
+                    sys.exit("you won")
+                DFS(cars, count, car)
+                cars[car].resetcar()
+                cars[car] = cc.Car((car + 1), initialy, initialx, cars[car].orient, cars[car].size)
+                cc.Lists.movelist.pop()
             else:
-                while bool(cars[car].move(-1)) == True:
-                    cars[car].move(-1)
-
-                movelist.append(car + 1)
-                print(movelist)
-                boardlist.append(copy.copy(cc.Board.board))
-                if cc.check() == True:
-                    print(cc.Board.board)
-                    print(movelist)
-                    for board in boardlist:
-                        print(board)
-                        print("")
-                        print(movelist)
-                    sys.exit("you won")
-                DFS(cars, count, car)
                 while bool(cars[car].move(1)) == True:
                     cars[car].move(1)
-            movelist.pop()
-            boardlist.pop()
+                cc.Lists.movelist.append(car + 1)
+                if cc.check() == True:
+                    print(cc.Board.board)
+                    print("")
+                    print(cc.Lists.movelist)
+                    sys.exit("you won")
+                DFS(cars, count, car)
+                cars[car].resetcar()
+                cars[car] = cc.Car((car + 1), initialy, initialx, cars[car].orient, cars[car].size)
+                cc.Lists.movelist.pop()
