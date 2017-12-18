@@ -9,21 +9,8 @@ In Rush Hour, a sliding block logic game, you have to battle the gridlock as you
 ## Getting Started
 When you download this project you will get 3 different alogrithms to solve Rush Hour boards with different sizes and difficulties. The goal is to solve the game with as less moves as possible. 
 
-main.py is the main program to run the different algorithms. In this file you will need to choose which algortihm you would like to run. You can do this by changing the following line of code on line 10:
+Due to the user friendly interface it is pretty straigth forward to solve a board. The program will promt the user for wich algorithm you want to solve the selected board with.
 
-* If you want to run the random algorithm:
-  * fun.randomize(cars, cc.RANDOM_CARS)
-* If you want to run the optimized random alogrithm:
-  * fun.random_two(cars, cc.RANDOM_CARS)
-* If you want to run the Depth First Search algorithm:
-  * fun.BFS(cars, maxmoves)
-  * You would probably want to run this algortihm on the games/testgame.csv board, cause this will take less time than the other boards.
-
-carclass.py consists of two classes. One for the implementation of the cars and one for the implementation of the board. In this file you can choose which game you would like to play. You can do this by changing the game number, for example in stead of game2 in game3, in the following line of code:
-
-* spel = pd.read_csv("games/game2.csv", delimiter = "\t")
-
-functies.py consists of functions we have written to implement the algorithms.
 
 
 ### Installing
