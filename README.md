@@ -23,13 +23,10 @@ To run this program you will need to install the following software:
 * Numpy
 * Pandas
 * Matplotlib
-* Itertools
 
+You can install Numpy, Pandas and Matplotlib with the use of the requirements.txt file. To install the following software use.
 
-To install the software you can use pip install. For example, type the following commands in your terminal to install matplotlib:
-
-1. python -mpip install -U pip
-2. python -mpip install -U matplotlib
+1. python -mpip install -r requirements.txt
 
 ## Instructions, to run the program
 * First you will need to choose which game you would like to play. In the getting started section is explained how you could do this.
