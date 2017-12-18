@@ -3,10 +3,7 @@ from functions import functions as fun
 from algorithms import random_algorithm as rand
 from algorithms import BFS_algorithm as bfs
 from algorithms import DFS_algorithm as dfs
-from numba import jit
-# import board
 
-@jit
 def main():
     # Create constants.
     RANDOM = 1
@@ -20,7 +17,6 @@ def main():
     print("Choose 1 to run the random algorithm.")
     print("Choose 2 to run the Breadth First Search algorithm.")
     print("Choose 3 to run the Depth First Search algorithm.")
-
 
     # Prompt the user for input.
     var = input("Please enter something: ")
@@ -41,8 +37,6 @@ def main():
         print("Start Depth First Search algorithm.")
         print(cc.Board.board)
         dfs.DFS(cars, 15)
-
-
 
     else:
         print("Error, you did not enter one of these options.")

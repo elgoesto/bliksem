@@ -2,8 +2,6 @@ import numpy as np
 import csv
 import pandas as pd
 
-
-
 class Game():
 
     # Import the csv file of the game you want to play.
@@ -44,13 +42,14 @@ class Car():
         elif orient == self.HORIZONTAL:
             Board.board[y, x:(size + x)] = car_id
 
+    # Remove the car from the board.
     def resetcar(self):
         if self.orient == self.VERTICAL:
             Board.board[self.y:(self.size + self.y), self.x] = 0
         elif self.orient == self.HORIZONTAL:
             Board.board[self.y, self.x:(self.size + self.x)] = 0
 
-
+    # Check if the car can move, if so return true if not return false.
     def possible_move(self):
         for i in range(Game.BSIZE):
             for j in range(Game.BSIZE):

@@ -6,7 +6,6 @@ from classes import carclass as cc
 import random
 
 
-
 # Function for the visualisation of the state of the board.
 def visualise(board, TOTAL_CARS, RANDOM_CARS):
     color_list= ["white", "red"]
