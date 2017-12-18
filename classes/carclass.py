@@ -8,7 +8,7 @@ class Game():
 
     # Import the csv file of the game you want to play.
     ' pick a board between 1 - 7:  "games/game[...].csv" '
-    game = pd.read_csv("games/game2.csv", delimiter = "\t")
+    game = pd.read_csv("games/testgame.csv", delimiter = "\t")
 
     # Define constants.
     BSIZE = int(game.iloc[0]["BSIZE"])
